@@ -16,6 +16,12 @@ public class UserController {
     @Autowired
     private UserService service;
 
+    @GetMapping(value = "/profile")
+    public ResponseEntity<UserDto> userLogged() {
+        UserDto dto = service.userLogged();
+        return ResponseEntity.ok().body(dto);
+    }
+
     @GetMapping(value = "/{id}")
     public ResponseEntity<UserDto> findById(@PathVariable Long id) {
         UserDto dto = service.findById(id);

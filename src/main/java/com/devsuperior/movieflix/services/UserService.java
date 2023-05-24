@@ -27,6 +27,12 @@ public class UserService implements UserDetailsService {
     private OAuthService oAuthService;
 
     @Transactional(readOnly = true)
+    public UserDto userLogged() {
+        User entity = oAuthService.authenticated();
+        return new UserDto(entity);
+    }
+
+    @Transactional(readOnly = true)
     public UserDto findById(Long id) {
         oAuthService.validateSelfOrAdmin(id);
         Optional<User> obj = repository.findById(id);
