@@ -4,23 +4,23 @@ import com.devsuperior.movieflix.entities.User;
 
 import java.io.Serializable;
 
-public class UserDto implements Serializable {
+public class UserDTO implements Serializable {
     private static final long serialVersionUID = 1L;
 
     private Long id;
     private String name;
     private String email;
 
-    public UserDto() {
+    public UserDTO() {
     }
 
-    public UserDto(Long id, String name, String email) {
+    public UserDTO(Long id, String name, String email) {
         this.id = id;
         this.name = name;
         this.email = email;
     }
 
-    public UserDto(User entity) {
+    public UserDTO(User entity) {
         id = entity.getId();
         name = entity.getName();
         email = entity.getEmail();

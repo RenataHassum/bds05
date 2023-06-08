@@ -1,6 +1,6 @@
 package com.devsuperior.movieflix.controllers;
 
-import com.devsuperior.movieflix.dtos.UserDto;
+import com.devsuperior.movieflix.dtos.UserDTO;
 import com.devsuperior.movieflix.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -17,14 +17,14 @@ public class UserController {
     private UserService service;
 
     @GetMapping(value = "/profile")
-    public ResponseEntity<UserDto> userLogged() {
-        UserDto dto = service.userLogged();
+    public ResponseEntity<UserDTO> userLogged() {
+        UserDTO dto = service.userLogged();
         return ResponseEntity.ok().body(dto);
     }
 
     @GetMapping(value = "/{id}")
-    public ResponseEntity<UserDto> findById(@PathVariable Long id) {
-        UserDto dto = service.findById(id);
+    public ResponseEntity<UserDTO> findById(@PathVariable Long id) {
+        UserDTO dto = service.findById(id);
         return ResponseEntity.ok().body(dto);
     }
 }

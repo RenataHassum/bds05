@@ -1,6 +1,6 @@
 package com.devsuperior.movieflix.services;
 
-import com.devsuperior.movieflix.dtos.UserDto;
+import com.devsuperior.movieflix.dtos.UserDTO;
 import com.devsuperior.movieflix.entities.User;
 import com.devsuperior.movieflix.repositories.UserRepository;
 import com.devsuperior.movieflix.services.exceptions.ResourceNotFoundException;
@@ -27,17 +27,17 @@ public class UserService implements UserDetailsService {
     private OAuthService oAuthService;
 
     @Transactional(readOnly = true)
-    public UserDto userLogged() {
+    public UserDTO userLogged() {
         User entity = oAuthService.authenticated();
-        return new UserDto(entity);
+        return new UserDTO(entity);
     }
 
     @Transactional(readOnly = true)
-    public UserDto findById(Long id) {
+    public UserDTO findById(Long id) {
         oAuthService.validateSelfOrAdmin(id);
         Optional<User> obj = repository.findById(id);
         User entity = obj.orElseThrow(() -> new ResourceNotFoundException("Resource not found"));
-        return new UserDto(entity);
+        return new UserDTO(entity);
     }
 
     @Override
