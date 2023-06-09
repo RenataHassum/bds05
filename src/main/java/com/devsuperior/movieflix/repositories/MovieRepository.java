@@ -10,7 +10,8 @@ public interface MovieRepository extends JpaRepository<Movie, Long> {
 
     @Query("SELECT DISTINCT obj FROM Movie obj WHERE " +
             "(:genreId IS NULL OR obj.genre.id = :genreId ) AND " +
-            "(LOWER(obj.title) LIKE LOWER(CONCAT('%',:title,'%'))) ")
+            "(LOWER(obj.title) LIKE LOWER(CONCAT('%',:title,'%'))) " +
+            "ORDER BY obj.title ASC")
     Page<Movie> searchByGenre(Long genreId, String title, Pageable pageable);
 }
 

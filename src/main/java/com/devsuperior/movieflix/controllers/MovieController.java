@@ -6,7 +6,9 @@ import com.devsuperior.movieflix.services.MovieService;
 import com.devsuperior.movieflix.services.ReviewService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -39,8 +41,10 @@ public class MovieController {
             @RequestParam(value = "genreId", defaultValue = "0") Long genreId,
             @RequestParam(value = "title", defaultValue = "") String title,
             Pageable pageable) {
+        PageRequest pageRequest = PageRequest.of(pageable.getPageNumber(), pageable.getPageSize(), Sort.by("title"));
 
-        Page<MovieDTO> list = movieService.findAllMoviesOrByGenre(genreId, title.trim(), pageable);
+
+        Page<MovieDTO> list = movieService.findAllMoviesOrByGenre(genreId, title.trim(), pageRequest);
         return ResponseEntity.ok().body(list);
     }
 }
