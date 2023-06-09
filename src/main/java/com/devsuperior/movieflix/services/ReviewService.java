@@ -9,6 +9,7 @@ import com.devsuperior.movieflix.repositories.ReviewRepository;
 import com.devsuperior.movieflix.repositories.UserRepository;
 import com.devsuperior.movieflix.services.exceptions.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -34,6 +35,7 @@ public class ReviewService {
         return list.stream().map(ReviewDTO::new).toList();
     }
 
+    @PreAuthorize("hasAnyRole('MEMBER')")
     @Transactional
     public ReviewDTO insert(ReviewDTO dto) {
         Review entity = new Review();

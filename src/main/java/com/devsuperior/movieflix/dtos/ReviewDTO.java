@@ -2,12 +2,16 @@ package com.devsuperior.movieflix.dtos;
 
 import com.devsuperior.movieflix.entities.Review;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
 
 public class ReviewDTO implements Serializable {
     private static final long serialVersionUID = 1L;
 
     private Long id;
+
+    @NotBlank(message = "Campo obrigatório, não é permitido texto vazio")
     private String text;
     private Long movieId;
     private UserDTO user;
