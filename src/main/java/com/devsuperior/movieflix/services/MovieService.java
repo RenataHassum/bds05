@@ -1,7 +1,9 @@
 package com.devsuperior.movieflix.services;
 
 import com.devsuperior.movieflix.dtos.MovieDTO;
+import com.devsuperior.movieflix.dtos.ReviewDTO;
 import com.devsuperior.movieflix.entities.Movie;
+import com.devsuperior.movieflix.entities.Review;
 import com.devsuperior.movieflix.repositories.MovieRepository;
 import com.devsuperior.movieflix.services.exceptions.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,4 +24,5 @@ public class MovieService {
         Movie entity = obj.orElseThrow(() -> new ResourceNotFoundException("Resource not found"));
         return new MovieDTO(entity);
     }
+
 }
