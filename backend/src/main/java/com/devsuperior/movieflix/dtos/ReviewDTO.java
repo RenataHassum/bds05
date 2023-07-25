@@ -3,7 +3,6 @@ package com.devsuperior.movieflix.dtos;
 import com.devsuperior.movieflix.entities.Review;
 
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
 
 public class ReviewDTO implements Serializable {
